@@ -18,4 +18,68 @@ const addWorkout = async (req, res) => {
   }
 };
 
-module.exports = { addWorkout };
+// Get all the workouts
+const getWorkouts = async (req, res) => {
+  try {
+    const workouts = await Workout.find().sort({ createdAt: -1 });
+    res.json(workouts);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+// Get a workout by id
+const getWorkoutById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const workout = await Workout.findById(id);
+    if (!workout) {
+      return res.status(404).json({ error: 'Workout not found' });
+    }
+
+    res.json(workout);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+// Edit a workout by id
+const editWorkoutById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const allowedUpdates = ['name'];
+    const updates = Object.keys(req.body);
+
+    const isValidUpdate = updates.every(update => allowedUpdates.includes(update));
+    if (!isValidUpdate) {
+      return res.status(400).json({ error: 'Invalid update' });
+    }
+
+    const workout = await Workout.findByIdAndUpdate(id, req.body, { new: true });
+    if (!workout) {
+      return res.status(404).json({ error: 'Workout not found' });
+    }
+
+    res.json(workout);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+// Delete a workout by id
+const deleteWorkoutById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const workout = await Workout.findByIdAndDelete(id);
+    if (!workout) {
+      return res.status(404).json({ error: 'Workout not found' });
+    }
+
+    res.json({ message: 'Workout deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+module.exports = { addWorkout, getWorkouts, getWorkoutById, editWorkoutById, deleteWorkoutById };
