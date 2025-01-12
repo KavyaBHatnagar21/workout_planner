@@ -1,0 +1,32 @@
+{
+  "name": "workout_planner_backend",
+  "version": "1.0.0",
+  "description": "The backend for a workout planner that can be used to plan a weekly workout session.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KavyaBHatnagar21/workout_planner.git"
+  },
+  "keywords": [
+    "backend",
+    "express",
+    "mongoose",
+    "api",
+    "workout",
+    "fitness"
+  ],
+  "author": "Abhyas Kumar Kanaujia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KavyaBHatnagar21/workout_planner/issues"
+  },
+  "homepage": "https://github.com/KavyaBHatnagar21/workout_planner#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
