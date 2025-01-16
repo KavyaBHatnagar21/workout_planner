@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Workout Planner</title>
+  </head>
+  <body>
+    <h1>Workout Planner</h1>
+    <div class="workout-container">
+      <div class="workout-input-form hidden">
+        <h2>Add a Workout</h2>
+        <form>
+          <label for="workout-name">Workout Name:</label>
+          <input type="text" id="workout-name" name="workout-name" />
+          <button
+            type="submit"
+            class="form-add-button"
+            onclick="addWorkoutHandler(event)"
+          >
+            Add
+          </button>
+          <button type="submit" class="form-edit-button">Update</button>
+        </form>
+      </div>
+
+      <div class="workout-list-container">
+        <h2>Workout List</h2>
+        <button
+          type="submit"
+          class="add-button"
+          onclick="showWorkoutInputForm()"
+        >
+          Add Workout
+        </button>
+
+        <ul id="workout-list"></ul>
+      </div>
+    </div>
+    <script src="./utils/api.js" defer></script>
+    <script src="./utils/ui.js" defer></script>
+    <script src="./utils/controller.js" defer></script>
+    <script src="index.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+.hidden {
+  display: none;
+}
+
+.workout-input-form > h2 {
+  text-transform: capitalize;
+}
