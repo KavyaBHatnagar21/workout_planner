@@ -27,5 +27,6 @@ app.get('/api/status', (req, res) => {
 })
 
 app.use('/api/workouts', require('./routes/workoutRoutes'))
+app.use('/api/workout-plans', require('./routes/WorkoutPlanRoutes'))
 
 app.listen(process.env.PORT || 3000, () => console.log(`Server running on port ${process.env.PORT || 3000}`));
