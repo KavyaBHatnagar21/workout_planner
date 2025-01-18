@@ -3,17 +3,17 @@ const $workoutList = document.querySelector("#workout-list")
 const $workoutInputForm = document.querySelector(".workout-input-form")
 
 /**
- * Gets all values assosciated with adding workout
- * @returns {object} - A dictionary containing values of the form representing a complete object
+ * Gets all values assosciated with adding/updating workout
+ * @returns {object} - A dictionary containing values of the form representing a complete object without _id and created/updated dates
  */
-const getAddWorkoutFormValues = () => ({
+const getWorkoutFormValues = () => ({
   name: $workoutNameInputBox.value,
 })
 
 /**
  * Clears the input boxes
  */
-const clearAddWorkoutForm = () => {
+const clearWorkoutForm = () => {
   $workoutNameInputBox.value = ""
 }
 
@@ -32,16 +32,21 @@ const showWorkoutInputForm = async (
   $workoutInputForm.querySelector("h2").textContent = formHeadingText
   $workoutInputForm.classList.remove("hidden")
   const $addButton = $workoutInputForm.querySelector(".form-add-button")
-  const $editButton = $workoutInputForm.querySelector(".form-edit-button")
+  const $updateButton = $workoutInputForm.querySelector(".form-edit-button")
 
   if (formAction === "save") {
     $addButton.classList.remove("hidden")
-    $editButton.classList.add("hidden")
+    $addButton.type = "submit"
+    $updateButton.classList.add("hidden")
+    $updateButton.type = "button"
     $workoutNameInputBox.value = ""
   } else if (formAction === "edit") {
     const workout = await getWorkoutByIdFromDb(workoutId)
     $addButton.classList.add("hidden")
-    $editButton.classList.remove("hidden")
+    $addButton.type = "button"
+    $updateButton.setAttribute("data-workout-id", workoutId)
+    $updateButton.classList.remove("hidden")
+    $updateButton.type = "submit"
     $workoutNameInputBox.value = workout.name
   } else {
     throw new Error(
@@ -66,8 +71,10 @@ const hideWorkoutInputForm = () => {
 const createWorkoutElement = (workout) =>
   `<li data-workout_id=${workout._id}>
     <p>${workout.name}</p>
-    <button type="button" onclick="deleteWorkoutHandler('${workout._id}')">Delete</button>
-    <button type="button" onclick="editWorkoutHandler('${workout._id}')">Edit</button>
+    <div class="workout-button-container">
+      <button type="button" class="workout-card-button" onclick="deleteWorkoutHandler('${workout._id}')">Delete</button>
+      <button type="button" class="workout-card-button" onclick="editWorkoutHandler('${workout._id}')">Edit</button>
+    </div>
   </li>`
 
 /**

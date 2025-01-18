@@ -61,7 +61,7 @@ const getWorkoutByIdFromDb = (wokroutId) =>
  *
  * @param {string} wokroutId - A unique id associated with each workout object to update
  * @param {object} workout - The data to update (e.g. { name: "Crunches" })
- * @returns {Promise<any>} - A promise that resolves to the fetched workout details
+ * @returns {Promise<any>} - A promise that resolves to the complete workout details along with _id and dates
  */
 const updateWorkoutInDb = (wokroutId, workout) =>
   apiRequest(`/api/workouts/${wokroutId}`, {

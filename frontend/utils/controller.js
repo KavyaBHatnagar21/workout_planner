@@ -13,12 +13,25 @@ const workoutListLoader = async () => {
  */
 const addWorkoutHandler = async (e) => {
   e.preventDefault()
-  const workoutFormValue = getAddWorkoutFormValues()
+  const workoutFormValue = getWorkoutFormValues()
   const workout = await addWorkoutToDb(workoutFormValue)
   addWorkoutToList(workout)
-  clearAddWorkoutForm()
+  clearWorkoutForm()
+  hideWorkoutInputForm()
 }
 
+/**
+ * Handles updation of the workout acquired from clicking the update button present on the update workout form
+ */
+const updateWorkoutFormHandler = async (event) => {
+  event.preventDefault()
+  const workoutId = event.target.getAttribute("data-workout-id")
+  const workoutFormValue = getWorkoutFormValues()
+  const newWorkout = await updateWorkoutInDb(workoutId, workoutFormValue)
+  replaceWorkoutInList(workoutId, newWorkout)
+  clearWorkoutForm()
+  hideWorkoutInputForm()
+}
 /**
  * Handles delete workout by removing workout from UI and DB
  */
