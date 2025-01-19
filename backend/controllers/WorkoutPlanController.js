@@ -6,7 +6,13 @@ const WorkoutPlan = require("../models/WorkoutPlanModel")
 const getWorkoutPlans = async (req, res) => {
     try {
         const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-        const completePlans = await Promise.all(daysOfWeek.map((day) => WorkoutPlan.getOrCreateWorkoutPlan(day)));
+        const completePlans = await Promise.all(
+            daysOfWeek.map((day) => WorkoutPlan.getOrCreateWorkoutPlan(day).catch((error) => {
+                console.warn(`Error getting or creating a workout plan for ${day}: ${error.message}`);
+                throw error;
+            })
+            )
+        );
         res.json(completePlans);
     } catch (error) {
         res.status(500).json({ error: "Server error" });
@@ -45,6 +51,9 @@ const updateWorkoutPlanByDay = async (req, res) => {
                 { new: true, upsert: true }
             )
         );
+        if (!workoutPlan) {
+            return res.status(404).json({ error: 'Workout plan not found' });
+        }
         res.json(workoutPlan);
     } catch (error) {
         res.status(400).json({ error: error.message });

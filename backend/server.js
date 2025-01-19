@@ -1,11 +1,14 @@
 const express = require('express')
 const cors = require('cors');
 const connectDB = require('./config/db')
+const morgan = require('morgan')
+
 
 const app = express();
 
 if (process.env.NODE_ENV !== 'production') {
     app.use(cors());
+    app.use(morgan('tiny'))
 } else {
     app.use(cors({
         origin: '',
