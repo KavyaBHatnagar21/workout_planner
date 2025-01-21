@@ -169,9 +169,9 @@ async function ApiUnitTest() {
   const workoutIds = allWorkouts.map((workout) => workout._id)
   console.log(workoutIds)
   const workoutPlan = {
-    warmup: [workoutIds[0], workoutIds[3]],
-    workouts: [workoutIds[1], workoutIds[4]],
-    cooldown: [workoutIds[2], workoutIds[5]],
+    warmup: [{workout: workoutIds[0], note: "10 repos 3 sets"}, {workout: workoutIds[3]}],
+    workouts: [{workout: workoutIds[1], note: "10 push ups 3 sets"}, {workout: workoutIds[4]}],
+    cooldown: [{workout: workoutIds[2], note: "10 squats 3 sets"}, {workout: workoutIds[5]}],
     isBreakDay: false,
   }
   console.log(workoutPlan)
