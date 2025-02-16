@@ -1,0 +1,91 @@
+.hidden {
+    display: none;
+}
+
+.workout-list-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.workout-list-container h2 {
+    margin-bottom: 1rem;
+}
+
+.workout-input-form {
+    background-color: var(--off-white);
+    border-radius: 15px;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+#add-new-workout-button {
+    background-color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.workout-element {
+    font-size: 1rem;
+    list-style-type: none;
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted var(--primary-dark);
+}
+
+.workout-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.workout-element:hover,
+.add-button:hover {
+    /*transform: translateY(-3px); !* Slight lift effect *!*/
+    transform: scale(1.01);
+}
+
+.workout-card-button {
+    background: none;
+    border: none;
+    color: rgba(0,0,0, 0.5);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.workout-card-button:hover {
+    color: black;
+}
+
+.workout-element .workout-name {
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .workout-input-form, .workout-list-container {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .workout-input-form, .workout-list-container {
+        width: 40%;
+    }
+}
+

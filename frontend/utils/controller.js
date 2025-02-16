@@ -51,7 +51,7 @@ const deleteWorkoutHandler = async (workoutId) => {
 }
 
 const editWorkoutHandler = async (workoutId) => {
-  showWorkoutInputForm("edit", "Edit a workout", workoutId)
+  showWorkoutInputForm("edit", workoutId)
 }
 
 const contollerUnitTest = () => {

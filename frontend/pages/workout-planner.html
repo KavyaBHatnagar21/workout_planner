@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="../index.css" rel="stylesheet"/>
+    <link href="workout-planner.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <title>Workout Planner</title>
+</head>
+<body>
+<header class="container">
+    <div class="back-button" onclick="window.location.href='../index.html'">
+        <span class="bi-arrow-left-circle" style="font-size: 2rem; color: var(--primary);"></span>
+    </div>
+    <h1>Workout Planner</h1>
+</header>
+<div class="planner-container container">
+    <main>
+        <nav class="weeks-container">
+            <button class="week-button">Monday</button>
+            <button class="week-button">Tuesday</button>
+            <button class="week-button">Wednesday</button>
+            <button class="week-button">Thursday</button>
+            <button class="week-button">Friday</button>
+            <button class="week-button">Saturday</button>
+            <button class="week-button">Sunday</button>
+        </nav>
+        <div id="break-input-container">
+            <label>
+                <input type="checkbox"> Break Day
+            </label>
+        </div>
+
+        <!-- Break Day Notice -->
+        <section id="break-day">
+            <h2>It's a Break Day! 🧘</h2>
+        </section>
+
+        <section id="workout-plan-section"></section>
+    </main>
+</div>
+<script defer src="../utils/api.js"></script>
+<script type="module" src="../utils/workout-planner-model.js"></script>
+<script defer src="../utils/workout-planner-view.js"></script>
+<script defer src="../utils/workout-planner-controller.js"></script>
+</body>
+</html>

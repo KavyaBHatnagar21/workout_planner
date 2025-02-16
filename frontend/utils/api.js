@@ -148,37 +148,37 @@ async function ApiUnitTest() {
   // ------------------------------
 
   // GET ALL WORKOUT PLANS
-  console.log(await getAllWorkoutPlansFromDb())
+  //console.log("kavya", await getAllWorkoutPlansFromDb())
 
   // GET WORKOUT PLAN BY DAY
-  console.log(await getWorkoutPlanByDayFromDb("monday"))
+  // console.log(await getWorkoutPlanByDayFromDb("monday"))
 
-  // UPDATE WORKOUT PLAN BY DAY
-  console.log(
-    await updateWorkoutPlanByDay("tuesday", {
-      warmup: [],
-      workouts: [],
-      cooldown: [],
-      isBreakDay: true,
-    })
-  )
+  // // UPDATE WORKOUT PLAN BY DAY
+  // console.log(
+  //   await updateWorkoutPlanByDay("tuesday", {
+  //     warmup: [],
+  //     workouts: [],
+  //     cooldown: [],
+  //     isBreakDay: true,
+  //   })
+  // )
 
-  // UPDATE WORKOUT PLAN BY DAY
-  const allWorkouts = await getAllWorkoutFromDb()
-  console.log(allWorkouts)
-  const workoutIds = allWorkouts.map((workout) => workout._id)
-  console.log(workoutIds)
-  const workoutPlan = {
-    warmup: [{workout: workoutIds[0], note: "10 repos 3 sets"}, {workout: workoutIds[3]}],
-    workouts: [{workout: workoutIds[1], note: "10 push ups 3 sets"}, {workout: workoutIds[4]}],
-    cooldown: [{workout: workoutIds[2], note: "10 squats 3 sets"}, {workout: workoutIds[5]}],
-    isBreakDay: false,
-  }
-  console.log(workoutPlan)
-  console.log(
-    "updated plan",
-    await updateWorkoutPlanByDay("wednesday", workoutPlan)
-  )
+  // // UPDATE WORKOUT PLAN BY DAY
+  // const allWorkouts = await getAllWorkoutFromDb()
+  // console.log(allWorkouts)
+  // const workoutIds = allWorkouts.map((workout) => workout._id)
+  // console.log(workoutIds)
+  // const workoutPlan = {
+  //   warmup: [{workout: workoutIds[0], note: "10 repos 3 sets"}, {workout: workoutIds[3]}],
+  //   workouts: [{workout: workoutIds[1], note: "10 push ups 3 sets"}, {workout: workoutIds[4]}],
+  //   cooldown: [{workout: workoutIds[2], note: "10 squats 3 sets"}, {workout: workoutIds[5]}],
+  //   isBreakDay: false,
+  // }
+  // console.log(workoutPlan)
+  // console.log(
+  //   "updated plan",
+  //   await updateWorkoutPlanByDay("wednesday", workoutPlan)
+  // )
 }
 
 ApiUnitTest()
