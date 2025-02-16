@@ -1,5 +1,3 @@
-const API_BASE_URL = "http://localhost:3000"
-
 /**
  * A reusable function to make API requests
  *
